@@ -130,3 +130,13 @@ Sat Oct  3 12:26:36 AM UTC 2026:
  1 file changed, 8 insertions(+)
  tests:  0|0
 a281495
+Sat Oct  3 12:28:42 AM UTC 2026: 
+ graph.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+Compilation failed
+/nix/store/mkvc0lnnpmi604rqsjdlv1pmhr638nbd-binutils-2.44/bin/ld: /tmp/ccqZetq0.o: in function `test_getEdges':
+/home/runner/workspace/test.c:138:(.text+0x5e7): undefined reference to `getEdges'
+/nix/store/mkvc0lnnpmi604rqsjdlv1pmhr638nbd-binutils-2.44/bin/ld: /tmp/ccqZetq0.o: in function `test_integracion_rutas':
+/home/runner/workspace/test.c:227:(.text+0x8f8): undefined reference to `getEdges'
+collect2: error: ld returned 1 exit status
+a06fc46
