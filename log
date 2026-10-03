@@ -6,3 +6,117 @@ Fri May  8 10:07:21 PM UTC 2026:
  tests:  0|6
 ========================================
 36e8bf5
+Sat Oct  3 12:22:17 AM UTC 2026: 
+Compilation failed
+In file included from graph.c:6,
+                 from test.c:5:
+graph.h: In function ‘createGraph’:
+graph.h:14:38: error: invalid application of ‘sizeof’ to incomplete type ‘Graph’
+   14 |     Graph* g = (Graph*)malloc(sizeof(Graph));
+      |                                      ^~~~~
+graph.h:16:6: error: invalid use of incomplete typedef ‘Graph’
+   16 |     g->adjacencyMap = map_create(is_equal_string);
+      |      ^~
+graph.h:16:23: error: implicit declaration of function ‘map_create’ [-Wimplicit-function-declaration]
+   16 |     g->adjacencyMap = map_create(is_equal_string);
+      |                       ^~~~~~~~~~
+graph.h:16:34: error: ‘is_equal_string’ undeclared (first use in this function)
+   16 |     g->adjacencyMap = map_create(is_equal_string);
+      |                                  ^~~~~~~~~~~~~~~
+graph.h:16:34: note: each undeclared identifier is reported only once for each function it appears in
+In file included from graph.c:8:
+map.h:14:6: error: conflicting types for ‘map_create’; have ‘Map *(int (*)(void *, void *))’
+   14 | Map *map_create(int (*is_equal)(void *key1, void *key2)); // unsorted map
+      |      ^~~~~~~~~~
+graph.h:16:23: note: previous implicit declaration of ‘map_create’ with type ‘int()’
+   16 |     g->adjacencyMap = map_create(is_equal_string);
+      |                       ^~~~~~~~~~
+graph.c:33:6: error: static declaration of ‘addNode’ follows non-static declaration
+   33 | void addNode(Graph* g, const char* label) {
+      |      ^~~~~~~
+graph.h:20:6: note: previous declaration of ‘addNode’ with type ‘void(Graph *, const char *)’
+   20 | void addNode(Graph* g, const char* label);
+      |      ^~~~~~~
+graph.c:38:6: error: static declaration of ‘addEdge’ follows non-static declaration
+   38 | void addEdge(Graph* g, const char* src, const char* dest, int weight) {
+      |      ^~~~~~~
+graph.h:23:6: note: previous declaration of ‘addEdge’ with type ‘void(Graph *, const char *, const char *, int)’
+   23 | void addEdge(Graph* g, const char* src, const char* dest, int weight);
+      |      ^~~~~~~
+graph.c:43:7: error: static declaration of ‘getEdges’ follows non-static declaration
+   43 | List* getEdges(Graph* g, const char* label) {
+      |       ^~~~~~~~
+graph.h:26:7: note: previous declaration of ‘getEdges’ with type ‘List *(Graph *, const char *)’
+   26 | List* getEdges(Graph* g, const char* label);
+      |       ^~~~~~~~
+graph.c:49:5: error: static declaration of ‘getWeight’ follows non-static declaration
+   49 | int getWeight(Graph* g, const char* label1, const char* label2) {
+      |     ^~~~~~~~~
+graph.h:30:5: note: previous declaration of ‘getWeight’ with type ‘int(Graph *, const char *, const char *)’
+   30 | int getWeight(Graph* g, const char* label1, const char* label2);
+      |     ^~~~~~~~~
+graph.c:57:7: error: static declaration of ‘getAdjacentLabels’ follows non-static declaration
+   57 | List* getAdjacentLabels(Graph* g, const char* label) {
+      |       ^~~~~~~~~~~~~~~~~
+graph.h:28:7: note: previous declaration of ‘getAdjacentLabels’ with type ‘List *(Graph *, const char *)’
+   28 | List* getAdjacentLabels(Graph* g, const char* label);
+      |       ^~~~~~~~~~~~~~~~~
+graph.c: In function ‘destroyGraph’:
+graph.c:67:32: error: invalid use of incomplete typedef ‘Graph’
+   67 |     MapPair* pair = map_first(g->adjacencyMap);
+      |                                ^~
+graph.c:87:26: error: invalid use of incomplete typedef ‘Graph’
+   87 |         pair = map_next(g->adjacencyMap);
+      |                          ^~
+graph.c:91:16: error: invalid use of incomplete typedef ‘Graph’
+   91 |     map_clean(g->adjacencyMap);
+      |                ^~
+graph.c:92:11: error: invalid use of incomplete typedef ‘Graph’
+   92 |     free(g->adjacencyMap);
+      |           ^~
+test.c: In function ‘test_create’:
+test.c:60:10: error: invalid use of incomplete typedef ‘Graph’
+   60 |     if (g->adjacencyMap == NULL) {
+      |          ^~
+test.c: In function ‘test_addNode’:
+test.c:73:11: error: storage size of ‘mock_graph’ isn’t known
+   73 |     Graph mock_graph;
+      |           ^~~~~~~~~~
+test.c:73:11: error: unused variable ‘mock_graph’ [-Werror=unused-variable]
+test.c: In function ‘test_addEdge’:
+test.c:99:11: error: storage size of ‘mock_graph’ isn’t known
+   99 |     Graph mock_graph;
+      |           ^~~~~~~~~~
+test.c:99:11: error: unused variable ‘mock_graph’ [-Werror=unused-variable]
+test.c: In function ‘test_getEdges’:
+test.c:130:11: error: storage size of ‘mock_graph’ isn’t known
+  130 |     Graph mock_graph;
+      |           ^~~~~~~~~~
+test.c:130:11: error: unused variable ‘mock_graph’ [-Werror=unused-variable]
+test.c: In function ‘test_getWeight’:
+test.c:152:11: error: storage size of ‘mock_graph’ isn’t known
+  152 |     Graph mock_graph;
+      |           ^~~~~~~~~~
+test.c:152:11: error: unused variable ‘mock_graph’ [-Werror=unused-variable]
+test.c: In function ‘createGraph’:
+test.c:279:5: error: ‘main’ is normally a non-static function [-Werror=main]
+  279 | int main(int argc, char *argv[]) {
+      |     ^~~~
+test.c:303:1: error: expected declaration or statement at end of input
+  303 | }
+      | ^
+test.c:15:6: error: unused variable ‘msg’ [-Werror=unused-variable]
+   15 | char msg[500];
+      |      ^~~
+test.c: At top level:
+test.c:279:5: error: ‘main’ defined but not used [-Werror=unused-function]
+  279 | int main(int argc, char *argv[]) {
+      |     ^~~~
+graph.c:57:7: error: ‘getAdjacentLabels’ defined but not used [-Werror=unused-function]
+   57 | List* getAdjacentLabels(Graph* g, const char* label) {
+      |       ^~~~~~~~~~~~~~~~~
+graph.c:21:5: error: ‘is_equal_string’ defined but not used [-Werror=unused-function]
+   21 | int is_equal_string(void *key1, void *key2) {
+      |     ^~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+eff72a9
